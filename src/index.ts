@@ -1,17 +1,19 @@
-import express from 'express'
+import { ApolloServer, gql } from "apollo-server";
 
-export class Server {
-  server: express.Application
-  port: number;
+const server = new ApolloServer({
+  typeDefs: gql`
+    type Query {
+      title: String
+    }
+  `,
+  resolvers: {
+    Query: {
+      title: () => {
+        return "Hellow";
+      }
+    }
+  },
+});
 
-  constructor() {
-    this.server = express()
-    this.port = 3000
-  }
 
-  startServer() {
-    this.server.listen(this.port, () => console.log('server running with success on port ' + this.port))
-  }
-}
-
-
+server.listen(4003, () => console.log('server running on port ' + 4003))
