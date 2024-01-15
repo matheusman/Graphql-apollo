@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  db-knex:
+    image: mysql
+    container_name: knex-node
+    restart: always
+    hostname: mysql-knex
+    ports:
+      - 3307:3306
+    volumes:
+      - ./db/mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: knex-node
