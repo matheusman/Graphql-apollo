@@ -1,18 +1,9 @@
-import { ApolloServer, gql } from "apollo-server";
+import { ApolloServer,  } from "apollo-server";
+import { resolvers, typeDefs } from "./schema";
 
 const server = new ApolloServer({
-  typeDefs: gql`
-    type Query {
-      title: String
-    }
-  `,
-  resolvers: {
-    Query: {
-      title: () => {
-        return "Hellow";
-      }
-    }
-  },
+  typeDefs,
+  resolvers,
 });
 
 
