@@ -2,9 +2,11 @@ import { gql } from 'apollo-server';
 
 export const userTypeDefs = gql`
   extend type Query {
-    user(id: ID!): User!
+    user(id: ID!): UserResult!
     users(input: ApiFilterInput): [User!]!
   }
+
+  union UserResult = User | TypeError
 
   type User {
     id: ID!
@@ -14,6 +16,11 @@ export const userTypeDefs = gql`
     indexRef: Int!
     createdAt: String!
     # posts: [Post!]!
+  }
+
+  type TypeError {
+    statusCode: Int!
+    message: String!
   }
 `;
 

@@ -1,4 +1,8 @@
 export interface userInterface {
   id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
+  userName: string;
+  indexRef: string;
+  createdAt: string;
 }
