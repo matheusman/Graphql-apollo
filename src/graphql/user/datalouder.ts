@@ -1,5 +1,0 @@
-
-
-class UserDataLouder extends DataLoader {
-
-}

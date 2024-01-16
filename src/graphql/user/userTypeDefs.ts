@@ -1,27 +1,20 @@
 import { gql } from 'apollo-server';
 
 export const userTypeDefs = gql`
-  extend type Query {
-    user(id: ID!): UserResult!
-    users(input: ApiFilterInput): [User!]!
-  }
+	extend type Query {
+		user(id: ID!): User!
+		users(input: ApiFilterInput): [User!]!
+	}
 
-  union UserResult = User | TypeError
-
-  type User {
-    id: ID!
-    firstName: String!
-    lastName: String!
-    userName: String!
-    indexRef: Int!
-    createdAt: String!
-    # posts: [Post!]!
-  }
-
-  type TypeError {
-    statusCode: Int!
-    message: String!
-  }
+	type User {
+		id: ID!
+		firstName: String!
+		lastName: String!
+		userName: String!
+		indexRef: Int!
+		createdAt: String!
+		# posts: [Post!]!
+	}
 `;
 
 // "id": "602",

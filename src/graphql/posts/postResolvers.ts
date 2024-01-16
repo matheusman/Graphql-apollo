@@ -1,25 +1,22 @@
+import { DataSourceInterface } from '../DataSource.interface';
 import { apiFilterInterface } from '../api-filter/interface/apiFilter.interface';
-import { contextInterface } from '../context/interface/context.interface';
 import { postInterface } from './interface/post.interface';
 
 const post = async (
   _: unknown,
   { id }: { id: string },
-  { getPost }: contextInterface
+  { dataSources }: DataSourceInterface
 ): Promise<postInterface> => {
-  const response = await getPost('/' + id);
-  const posts = await response.data;
-  return posts;
+  const post = await dataSources.postApi.getPost('/' + id);
+  return post;
 };
 
 const posts = async (
   _: unknown,
   { input }: { input: apiFilterInterface },
-  { getPosts }: contextInterface
+  { dataSources }: DataSourceInterface
 ): Promise<postInterface[]> => {
-  const params = new URLSearchParams(input as URLSearchParams | undefined);
-  const response = await getPosts('/?' + params.toString());
-  const posts = await response.data;
+  const posts = dataSources.postApi.getPosts(input);
   return posts;
 };
 

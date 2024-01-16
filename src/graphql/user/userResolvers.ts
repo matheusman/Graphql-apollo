@@ -1,46 +1,28 @@
-import { contextInterface } from '../context/interface/context.interface';
 import { apiFilterInterface } from '../api-filter/interface/apiFilter.interface';
-import { URLSearchParams } from 'url';
-import { UserError } from './interface/userError.interface';
 import { userInterface } from './interface/user.interface';
-import { checkInterface } from '../../checkInterfaceGeneric';
-
+import { DataSourceInterface } from '../DataSource.interface';
 
 const user = async (
 	_: unknown,
 	{ id }: { id: string },
-	{ getUser }: contextInterface
-): Promise<userInterface | UserError> => {
-	const request = await getUser('/' + id);
-	const user = request.data;
-	if (checkInterface<userInterface>(user, 'id')) {
-		return {
-			statusCode: 404,
-			message: 'Usuario não existe',
-		};
-	}
+	{ dataSources }: DataSourceInterface
+): Promise<userInterface> => {
+	const user = await dataSources.userApi.getUser('/' + id);
 	return user;
 };
 
 const users = async (
 	_: unknown,
 	{ input }: { input: apiFilterInterface },
-	{ getUsers }: contextInterface
+	{ dataSources }: DataSourceInterface
 ): Promise<userInterface[]> => {
-	const params = new URLSearchParams(input as URLSearchParams | undefined);
-	const users = await getUsers('/?' + params.toString());
-	const data = await users.data;
-	return data;
+	const users = await dataSources.userApi.getUsers(input);
+	return users;
 };
 
 export const userResolvers = {
 	Query: {
 		user,
 		users,
-	},
-	UserResult: {
-		__resolveType: (obj: unknown) => {
-			return checkInterface<UserError>(obj, 'statusCode');
-		},
 	},
 };
