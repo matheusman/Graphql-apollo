@@ -14,9 +14,6 @@ services:
       - ~/.MySQLDBData/mysqlonly/graphql_mysql:/var/lib/mysql
     ports:
       - 3307:3306
-    environment:
-      MYSQL_ROOT_PASSWORD: senha
-      MYSQL_DATABASE: graphql_mysql
-      MYSQL_USER: usuario
-      MYSQL_PASSWORD: senha
-      TZ: America/Sao_Paulo
+    env_file:
+      - ./database.env
+

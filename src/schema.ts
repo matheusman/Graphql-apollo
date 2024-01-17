@@ -10,12 +10,19 @@ const rootTypeDefs = gql`
 	type Query {
 		_isEmpty: Boolean!
 	}
+
+  type Mutation {
+    _isEmpty: Boolean!
+  }
 `;
 
 const rootResolvers = {
 	Query: {
 		_isEmpty: () => true,
-	},
+  },
+  Mutation: {
+    _isEmpty: () => true,
+  }
 };
 
 export const typeDefs = [rootTypeDefs, userTypeDefs, postTypeDefs, apiFilterTypeDefs];
