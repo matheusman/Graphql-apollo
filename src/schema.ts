@@ -7,26 +7,16 @@ import { apiFilterTypeDefs } from './graphql/api-filter/apiFilterTypeDefs';
 import { apiFilterResolvers } from './graphql/api-filter/apiFilterResolvers';
 
 const rootTypeDefs = gql`
-  type Query {
-    _isEmpty: Boolean!
-  }
+	type Query {
+		_isEmpty: Boolean!
+	}
 `;
 
 const rootResolvers = {
-  Query: {
-    _isEmpty: () => true,
-  },
+	Query: {
+		_isEmpty: () => true,
+	},
 };
 
-export const typeDefs = [
-  rootTypeDefs,
-  userTypeDefs,
-  postTypeDefs,
-  apiFilterTypeDefs,
-];
-export const resolvers = [
-  rootResolvers,
-  userResolvers,
-  postResolvers,
-  apiFilterResolvers,
-];
+export const typeDefs = [rootTypeDefs, userTypeDefs, postTypeDefs, apiFilterTypeDefs];
+export const resolvers = [rootResolvers, userResolvers, postResolvers, apiFilterResolvers];
