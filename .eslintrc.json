@@ -10,6 +10,15 @@
 		"ecmaVersion": "latest",
 		"sourceType": "module"
 	},
+  "overrides": [
+    {
+			"files": ["./src/**.{spec,test}.{ts,js}"],
+			"plugins": ["jest"],
+			"env": {
+				"jest/globals": true
+			}
+		}
+  ],
 	"plugins": ["@typescript-eslint"],
 	"rules": {
 		"@typescript-eslint/no-explicit-any": "off"

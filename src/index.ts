@@ -4,7 +4,7 @@ import { context } from './graphql/context/context';
 import 'dotenv/config';
 import { dataSources } from './graphql/datasources/dataSources';
 
-const server = new ApolloServer({
+export const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	context,
@@ -15,4 +15,3 @@ const server = new ApolloServer({
   }
 });
 
-server.listen(4003, () => console.log('server running on port ' + 4003));

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should server its be defined match snapshot 1`] = `
+{
+  "mutation": {
+    "data": {
+      "_isEmpty": true,
+    },
+    "errors": undefined,
+    "extensions": undefined,
+    "http": {
+      "headers": Headers {
+        Symbol(map): {},
+      },
+    },
+  },
+  "query": {
+    "data": {
+      "_isEmpty": true,
+    },
+    "errors": undefined,
+    "extensions": undefined,
+    "http": {
+      "headers": Headers {
+        Symbol(map): {},
+      },
+    },
+  },
+}
+`;

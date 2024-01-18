@@ -1,10 +1,13 @@
-Criando um datasource com cache
+Criando um datasource com cache</br>
 
-Montando um unit testing
+Montando um unit testing</br>
 
-Rodar a aplicação -> docker compose up
-Rodar jsonServer -> <bold>docker exec -it container_name bash</bold> </br>
-<bold>yarn run server</bold> 
+Rodar a aplicação:</br>
+docker compose up</br>
+</br>
+Rodar jsonServer:</br>
+<bold>docker exec -it your_container_name bash</bold> </br>
+<bold>yarn run server</bold>
 
 
 localhost:3000 -> jsonServer -> base de dados </br>
