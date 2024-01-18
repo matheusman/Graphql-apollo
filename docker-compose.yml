@@ -1,19 +1,27 @@
 version: '3'
 services:
-  graphql_mysql:
-    container_name: graphql_mysql
-    hostname: graphql_mysql
-    image: mysql
-    restart: always
-    command:
-      - --default-authentication-plugin=mysql_native_password
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_unicode_ci
-      - --innodb_force_recovery=0
+  apollo:
+    container_name: apollo-node
+    build: .
     volumes:
-      - ~/.MySQLDBData/mysqlonly/graphql_mysql:/var/lib/mysql
+      - .:/usr/app
     ports:
-      - 3307:3306
-    env_file:
-      - ./database.env
+      - 4003:4003
+      - 3000:3000
+    depends_on:
+      - db
+  db:
+    container_name: graphql_postgres
+    image: postgres
+    restart: always
+    volumes:
+      - ~/pgdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: postgresql_knex
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
 
+volumes:
+  pgdata: ~
